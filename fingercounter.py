@@ -21,15 +21,18 @@ for imgPath in mylist:
     overlayList.append(image)
 
 print(len(overlayList))
-
+pTime=0
 
 while True:
     success, img= cap.read()
 
     myimg=overlayList[0]
-    a=myimg.shape[0]
-    b=myimg.shape[1]
+    a, b,c = myimg.shape
     img[0:a,0:b]= myimg
+
+    cTime= time.time()
+    fps=1/(cTime-pTime)
+    pTime=cTime
 
     cv2.imshow("Image", img)
     if cv2.waitKey(1) & 0xFF == ord('q'):

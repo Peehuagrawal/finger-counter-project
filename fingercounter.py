@@ -12,10 +12,25 @@ cap.set(4, hCam)
 
 folderPath= "Images"
 mylist= os.listdir(folderPath)
-print(mylist)
+#print(mylist)
+overlayList= []
+
+for imgPath in mylist:
+    image= cv2.imread(f'{folderPath}/{imgPath}')
+    #print(f'{folderPath}/{imgPath}')
+    overlayList.append(image)
+
+print(len(overlayList))
+
 
 while True:
     success, img= cap.read()
+
+    myimg=overlayList[0]
+    a=myimg.shape[0]
+    b=myimg.shape[1]
+    img[0:a,0:b]= myimg
+
     cv2.imshow("Image", img)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

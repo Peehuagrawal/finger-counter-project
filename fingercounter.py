@@ -47,12 +47,12 @@ while True:
                 fingers.append(0)
     #print(fingers)
     totalfingers=fingers.count(1)
-    print(totalfingers)
+    #print(totalfingers)
 
 
     myimg=overlayList[totalfingers]
     a, b,c = myimg.shape
-    #img[0:a,0:b]= myimg
+    img[0:a,0:b]= myimg
 
     cTime= time.time()
     fps=1/(cTime-pTime)

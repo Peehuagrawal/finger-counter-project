@@ -25,15 +25,28 @@ print(len(overlayList))
 pTime=0
 
 detector=htm.handDetector()
+tipIds= [4,8,12,16,20]
 
 while True:
     success, img= cap.read()
     img= detector.findHands(img)
     lmlist= detector.findPosition(img, draw=False)
+    #print(lmlist)
+    fingers=[]
+    if len(lmlist)>=9:
+        
+        for id in range(1,5):
+            if lmlist[tipIds[id]][2]<lmlist[tipIds[id]-2][2]:
+                fingers.append(1)
+            else:
+                fingers.append(0)
+    print(fingers)
+    
+
 
     myimg=overlayList[0]
     a, b,c = myimg.shape
-    img[0:a,0:b]= myimg
+    #img[0:a,0:b]= myimg
 
     cTime= time.time()
     fps=1/(cTime-pTime)

@@ -28,6 +28,8 @@ detector=htm.handDetector()
 
 while True:
     success, img= cap.read()
+    img= detector.findHands(img)
+    lmlist= detector.findPosition(img, draw=False)
 
     myimg=overlayList[0]
     a, b,c = myimg.shape

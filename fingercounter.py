@@ -45,11 +45,12 @@ while True:
                 fingers.append(1)
             else:
                 fingers.append(0)
-    print(fingers)
-    
+    #print(fingers)
+    totalfingers=fingers.count(1)
+    print(totalfingers)
 
 
-    myimg=overlayList[0]
+    myimg=overlayList[totalfingers]
     a, b,c = myimg.shape
     #img[0:a,0:b]= myimg
 

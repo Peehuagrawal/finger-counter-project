@@ -51,7 +51,12 @@ while True:
 
 
     myimg=overlayList[totalfingers]
+    height, width = myimg.shape[:2]
+
+# Resize the image to 2x width and 2x height
+    myimg = cv2.resize(myimg, (width * 2, height * 2)) 
     a, b,c = myimg.shape
+
     img[0:a,0:b]= myimg
 
     cTime= time.time()
